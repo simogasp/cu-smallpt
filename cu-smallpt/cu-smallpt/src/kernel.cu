@@ -22,6 +22,11 @@
 
 #pragma endregion
 
+#ifdef __unix
+template<typename T, size_t SizeOfArray>
+constexpr size_t _countof(T (&array)[SizeOfArray]) { return SizeOfArray; }
+#endif
+
 //-----------------------------------------------------------------------------
 // Declarations and Definitions
 //-----------------------------------------------------------------------------

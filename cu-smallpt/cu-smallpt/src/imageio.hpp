@@ -16,6 +16,10 @@
 
 #include <cstdio>
 
+#ifdef __unix
+#define fopen_s(pFile,filename,mode) ((*(pFile))=fopen((filename),(mode)))==NULL
+#endif
+
 #pragma endregion
 
 //-----------------------------------------------------------------------------
