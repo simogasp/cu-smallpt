@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.18)
+
+project(cu_smallpt LANGUAGES CXX CUDA)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+if(NOT DEFINED CMAKE_CUDA_STANDARD)
+    set(CMAKE_CUDA_STANDARD 14)
+    set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+endif()
+
+add_executable(cu_smallpt kernel.cu)
+
+
+set_target_properties(cu_smallpt PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
+
+target_include_directories(cu_smallpt
+        PUBLIC  ${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES}
+        )
+message(STATUS "CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES ${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES}")
